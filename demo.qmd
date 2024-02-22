@@ -17,7 +17,7 @@ airport_locations <- nycflights13::airports |>
   dplyr::select(id = faa, name, lat, lon)
 
 copy_clip <- function(data) {
-  write.table(data, "clipboard", quote = FALSE, sep = ",", row.names = FALSE)
+  write.table(data, "clipboard-1024", quote = FALSE, sep = ",", row.names = FALSE)
 }
 ```
 
@@ -40,3 +40,19 @@ dplyr::glimpse(nyc_flows_may)
 skimr::skim(nyc_flows_may)
 ```
 
+## Demo 3: Create a flow map visualizing monthly fluctuations in flight trips originating from NYC
+
+```{r nyc-flows-monthly}
+nyc_flows_monthly <- nyc_flights |>
+  dplyr::mutate(
+    time = lubridate::ym(glue::glue("{year}-{month}")),
+    time = lubridate::format_ISO8601(time, precision = "ym")
+  ) |>
+  dplyr::count(origin, dest, time, name = "count") |>
+  dplyr::relocate(time, .after = dplyr::last_col())
+dplyr::glimpse(nyc_flows_monthly)
+
+nyc_flows_monthly |>
+  dplyr::group_by(time) |>
+  skimr::skim()
+```
