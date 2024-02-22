@@ -56,3 +56,18 @@ nyc_flows_monthly |>
   dplyr::group_by(time) |>
   skimr::skim()
 ```
+
+## Demo 4: Create a flow map visualizing hourly fluctuations in flight trips originating from NYC on Thanksgiving eve
+
+```{r nyc-flows-thanksgiving-eve}
+nyc_flows_thanksgiving_eve <- nyc_flights |>
+  dplyr::filter(month == 11, day == 27) |>
+  dplyr::mutate(time_hour = as.character(time_hour)) |>
+  dplyr::count(origin, dest, time_hour, name = "count") |>
+  dplyr::relocate(time = time_hour, .after = dplyr::last_col())
+dplyr::glimpse(nyc_flows_thanksgiving_eve)
+
+nyc_flows_thanksgiving_eve |>
+  dplyr::group_by(time) |>
+  skimr::skim()
+```
