@@ -11,10 +11,30 @@ editor_options:
 # write your code here
 ```
 
-Create two side-by-side flow maps with NYC flows data in May and in December. Do you see any difference?
+Compare and contrast NYC flow maps for May and December.
 
 ::: callout-tip
 ## Point to ponder
 
 Wouldn't it be easier if we could see month-by-month flow changes in a single view?
+:::
+
+## Task 2: Create a flow map visualizing hourly fluctuations in flight trips originating from NYC on Christmas eve
+
+```{r nyc-flows-christmas-eve}
+# write your code here
+```
+
+## Task 3: Create a flow map visualizing hourly fluctuations in flight trips originating from NYC on Christmas
+
+```{r}
+# write your code here
+```
+
+Compare and contrast NYC flow maps for Christmas Eve and Christmas.
+
+::: callout-tip
+## Point to ponder
+
+Wouldn't it be easier if we could see flows for Christmas Eve and Christmas in a single view?
 :::
