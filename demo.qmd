@@ -57,7 +57,7 @@ nyc_flows_monthly |>
   skimr::skim()
 ```
 
-## Demo 4: Create a flow map visualizing hourly fluctuations in flight trips originating from NYC on Thanksgiving eve
+## Demo 4: Create a flow map visualizing hourly fluctuations in flight trips originating from NYC on Thanksgiving Eve
 
 ```{r nyc-flows-thanksgiving-eve}
 nyc_flows_thanksgiving_eve <- nyc_flights |>
@@ -85,4 +85,42 @@ dplyr::glimpse(nyc_flows_thanksgiving)
 nyc_flows_thanksgiving |>
   dplyr::group_by(time) |>
   skimr::skim()
+```
+
+## Demo 6: Create a flow map comparing hourly fluctuations in flight trips originating from NYC on Thanksgiving Eve vs. Thanksgiving
+
+```{r nyc-flows-thanksgiving-googlesheet, eval = FALSE}
+nyc_flows_thanksgiving_descr <- tibble::tribble(
+                       ~property, ~value,
+                         "title", "2013 NYC outbound flights around Thanksgiving",
+                   "description", "How did travel look on Thanksgiving Eve and Thanksgiving by time of day?",
+                   "source.name", "nycflights13 R package",
+                    "source.url", "https://github.com/tidyverse/nycflights13",
+                "createdBy.name", "Ashirwad Barnwal",
+               "createdBy.email", "ashirwad1992@gmail.com",
+                 "createdBy.url", "https://www.linkedin.com/in/ashirwad1992/",
+            "mapbox.accessToken", NA,
+               "mapbox.mapStyle", NA,
+                 "colors.scheme", "Default",
+               "colors.darkMode", "yes",
+                 "animate.flows", "yes",
+                    "clustering", "yes",
+                  "flows.sheets", "Thanksgiving Eve, Thanksgiving",
+  "msg.locationTooltip.incoming", "Inbound trips",
+  "msg.locationTooltip.outgoing", "Outbound trips",
+  "msg.locationTooltip.internal", "Internal & round trips",
+    "msg.flowTooltip.numOfTrips", "Number of trips",
+       "msg.totalCount.allTrips", "{0} trips",
+   "msg.totalCount.countOfTrips", "{0} of {1} trips"
+)
+
+googlesheets4::gs4_create(
+  name = "nycflights13-thanksgiving-flowmap",
+  sheets = list(
+    properties = nyc_flows_thanksgiving_descr, 
+    locations = airport_locations,
+    `Thanksgiving Eve` = nyc_flows_thanksgiving_eve,
+    Thanksgiving = nyc_flows_thanksgiving
+  )
+)
 ```
