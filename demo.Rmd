@@ -15,6 +15,10 @@ nyc_flights <- nycflights13::flights |>
 airport_locations <- nycflights13::airports |>
   dplyr::filter(faa %in% unique(c(nyc_flights$origin, nyc_flights$dest))) |>
   dplyr::select(id = faa, name, lat, lon)
+
+copy_clip <- function(data) {
+  write.table(data, "clipboard", quote = FALSE, sep = ",", row.names = FALSE)
+}
 ```
 
 ## Demo 1: Create a flow map visualizing total flight trips originating from New York (NYC)
