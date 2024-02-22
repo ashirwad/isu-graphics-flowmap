@@ -1,11 +1,20 @@
 ---
-title: "Untitled"
+title: "Tasks for attendees"
 format: html
-editor: visual
+editor_options: 
+  chunk_output_type: console
 ---
 
 ## Task 1: Create a flow map visualizing total flight trips originating from NYC in December
 
 ```{r nyc-flows-dec}
-
+# write your code here
 ```
+
+Create two side-by-side flow maps with NYC flows data in May and in December. Do you see any difference?
+
+::: callout-tip
+## Point to ponder
+
+Wouldn't it be easier if we could see month-by-month flow changes in a single view?
+:::
