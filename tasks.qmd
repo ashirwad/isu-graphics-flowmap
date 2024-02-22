@@ -27,7 +27,7 @@ Wouldn't it be easier if we could see month-by-month flow changes in a single vi
 
 ## Task 3: Create a flow map visualizing hourly fluctuations in flight trips originating from NYC on Christmas
 
-```{r}
+```{r nyc-flows-christmas}
 # write your code here
 ```
 
@@ -40,3 +40,7 @@ Wouldn't it be easier if we could see flows for Christmas Eve and Christmas in a
 :::
 
 ## Task 4: Create a flow map comparing hourly fluctuations in flight trips originating from NYC on Christmas Eve vs. Christmas
+
+```{r nyc-flows-christmas-googlesheet}
+# write your code here
+```
