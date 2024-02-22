@@ -1,0 +1,27 @@
+---
+title: "Hands-on examples on creating flow maps"
+output: html_document
+date: "2024-02-22"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup}
+nyc_flights <- nycflights13::flights |>
+  dplyr::filter(
+    # discarding since airport location is not available
+    !dest %in% c("BQN", "PSE", "SJU", "STT")
+  )
+airport_locations <- nycflights13::airports |>
+  dplyr::filter(faa %in% unique(c(nyc_flights$origin, nyc_flights$dest))) |>
+  dplyr::select(id = faa, name, lat, lon)
+```
+
+## Demo 1: Create a flow map visualizing total flight trips originating from New York (NYC)
+
+```{r nyc-flows}
+nyc_flows <- nyc_flights |>
+  dplyr::count(origin, dest, name = "count")
+dplyr::glimpse(nyc_flows)
+skimr::skim(nyc_flows)
+```
