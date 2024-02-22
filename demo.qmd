@@ -39,3 +39,9 @@ nyc_flows_may <- nyc_flights |>
 dplyr::glimpse(nyc_flows_may)
 skimr::skim(nyc_flows_may)
 ```
+
+## Task 1: Create a flow map visualizing total flight trips originating from NYC in December
+
+```{r nyc-flows-dec}
+
+```
