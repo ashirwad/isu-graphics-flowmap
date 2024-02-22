@@ -38,3 +38,5 @@ Compare and contrast NYC flow maps for Christmas Eve and Christmas.
 
 Wouldn't it be easier if we could see flows for Christmas Eve and Christmas in a single view?
 :::
+
+## Task 4: Create a flow map comparing hourly fluctuations in flight trips originating from NYC on Christmas Eve vs. Christmas
